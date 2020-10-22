@@ -17,9 +17,10 @@ def solve(img, choice, kernel):
         img_padding = np.pad(img,((2,2),(2,2)),'constant',constant_values = (0,0))
         ret = np.zeros_like(img)
         row,col = img.shape
+        kernel = kernel.astype(np.bool)
         for r in range(row):
             for c in range(col):
-                if ((img_padding[r:r+5,c:c+5] & kernel) == kernel).all():
+                if img_padding[r:r+5,c:c+5][kernel].all():
                     ret[r,c] = 255 
         return ret
 
