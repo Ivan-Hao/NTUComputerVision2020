@@ -4,16 +4,12 @@ import cv2
 def h(b,c,d,e):
     if b == c and (b != d or b != e):
         return 'q'
-    if b == c and (b == d or b == e):
+    if b == c and (b == d and b == e):
         return 'r'
-    if b != c:
-        return 's'
+    return 's'
 
 def f(a1,a2,a3,a4):
-    if a1 == a2 == a3 == a4 == 'r':
-        return 5
-    else:
-        return [a1,a2,a3,a4].count('q')
+    return 5 if a1 == a2 == a3 == a4 == 'r' else [a1,a2,a3,a4].count('q')
 
 def Yokoi_connectivity_number(img):
     img = np.where(img>127, 255, 0) # binarilize
