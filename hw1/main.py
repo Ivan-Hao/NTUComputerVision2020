@@ -46,9 +46,9 @@ def part2(img, choice):
 
 if __name__ == "__main__":
     img = cv2.imread('lena.bmp')
-    part1(img, 0)
-    part1(img, 1)
-    part1(img, 2)
-    part2(img, 0)
-    part2(img, 1)
-    part2(img, 2)
+    part1(img.copy(), 0)
+    part1(img.copy(), 1)
+    part1(img.copy(), 2)
+    part2(img.copy(), 0)
+    part2(img.copy(), 1)
+    part2(img.copy(), 2)

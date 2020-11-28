@@ -93,7 +93,7 @@ def part1(img, choice):
 
 if __name__ == "__main__":
     img = cv2.imread('lena.bmp',0)
-    part1(img,0)
-    part1(img,1)
-    #part1(img,2)
+    part1(img.copy(),0)
+    part1(img.copy(),1)
+    part1(img.copy(),2)
 
