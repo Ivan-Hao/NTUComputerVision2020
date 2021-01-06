@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
 
-def zero_crossing(img,mask):
+def zero_crossing(img, mask):
     mask_padding = cv2.copyMakeBorder(mask,1,1,1,1,cv2.BORDER_REPLICATE)
     img_return = np.full_like(img,255,dtype=np.uint8)
     for r in range(img.shape[0]):
@@ -11,8 +11,8 @@ def zero_crossing(img,mask):
     return img_return
 
 def gradient(mask, k, b, threshold, img_padding):
-    for r in range(img.shape[0]):
-        for c in range(img.shape[1]):
+    for r in range(mask.shape[0]):
+        for c in range(mask.shape[1]):
             gradient_magnitude = np.sum(img_padding[r:r+b,c:c+b] * k)
             if gradient_magnitude >= threshold:
                 mask[r,c] = 1
@@ -24,7 +24,7 @@ def gradient(mask, k, b, threshold, img_padding):
 def Laplacian_1(img, threshold=15):
     k = np.array([[0,1,0],[1,-4,1],[0,1,0]],dtype=np.int32)
     img_padding = cv2.copyMakeBorder(img,1,1,1,1,cv2.BORDER_REPLICATE).astype(np.int32)
-    mask = np.zeros_like(img,dtype=np.int32)
+    mask = np.zeros_like(img, dtype=np.int32)
     gradient(mask, k, k.shape[0], threshold, img_padding)
     return zero_crossing(img, mask)
 
